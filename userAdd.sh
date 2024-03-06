@@ -1,8 +1,11 @@
 #!/bin/bash
 
-if [[ $(cat /etc/passwd | grep eli | wc -l) > 0 ]]; then
-      echo "User Eli exists"
-else
-	useradd -m eli
-	echo "User Eli created"
-fi
+while read user ;
+do
+	if [[ $(cat /etc/passwd | grep $user | wc -l) > 0 ]]; then
+           echo "User $user exists"
+	else
+		useradd -m $user
+		echo "User $user created"
+	fi
+done <userList.csv
