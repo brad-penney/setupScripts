@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Add users based on userList.csv
 while read user ;
 do
 	if [[ $(cat /etc/passwd | grep $user | wc -l) > 0 ]]; then

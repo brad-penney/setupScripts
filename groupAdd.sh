@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Create groups from list
 while read group ;
 do
 	if [[ $(cat /etc/group | grep $group | wc -l) > 0 ]]; then
@@ -10,17 +11,19 @@ do
 	fi
 done <groupList.csv
 
+# Add devs to developers group
 while read devs ;
 do
 	usermod -aG developers $devs
 done <developers.csv
 
-
+# Add testers to testers group
 while read tests ;
 do
 	usermod -aG testers $tests
 done <testers.csv
 
+# Add production support to prodSupport group
 while read prodS ;
 do
 	usermod -aG prodSupport $prodS
